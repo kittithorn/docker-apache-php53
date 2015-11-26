@@ -21,8 +21,10 @@ RUN a2enmod rewrite
 RUN a2enmod ssl
 RUN a2ensite default-ssl
 
-RUN sed -ri 's/^display_errors\s*=\s*On/display_errors = Off/g' /etc/php5/apache2/php.ini
-RUN sed -ri 's/^AllowOverride\s*=\s*None/AllowOverride = All/g' /etc/php5/apache2/php.ini
+RUN sed -e 's/None/All/g' -i /etc/apache2/sites-available/default
+RUN sed -i 's/display_errors = On/display_errors = Off/g' -i /etc/php5/apache2/php.ini
+RUN sed -e 's/error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE/error_reporting = E_ALL/' -i /etc/php5/apache2/php.ini
+
 
 RUN service apache2 restart
 
