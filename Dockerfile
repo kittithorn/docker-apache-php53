@@ -18,6 +18,8 @@ COPY apache_default /etc/apache2/sites-available/default
 COPY run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
 RUN a2enmod rewrite
+RUN a2ensite default-ssl
 
 EXPOSE 80
+EXPOSE 443
 CMD ["/usr/local/bin/run"]
