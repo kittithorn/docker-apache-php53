@@ -22,7 +22,7 @@ RUN a2enmod ssl
 RUN a2ensite default-ssl
 
 RUN sed -e 's/None/All/g' -i /etc/apache2/sites-available/default
-RUN sed -i 's/display_errors = On/display_errors = Off/g' -i /etc/php5/apache2/php.ini
+RUN sed -e 's/display_errors = On/display_errors = Off/g' -i /etc/php5/apache2/php.ini
 RUN sed -e 's/error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE/error_reporting = E_ALL/' -i /etc/php5/apache2/php.ini
 
 
